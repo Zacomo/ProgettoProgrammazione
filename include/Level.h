@@ -53,6 +53,9 @@ class Level
 
         void shopMenu(PlayableCharacter& pg, std::vector<Item>& itemsSet);
         //  Genera la finestra dello shop con i vari Item da acquistare
+
+        void moveMonster(Point playerPosition, Monster& mons);
+        //  Il mostro si sposta di 1 verso il pg (solo se questo accorcia la distanza tra loro)
 };
 
 void writeInfo(Window& win,PlayableCharacter& pg, int level);
@@ -61,11 +64,8 @@ void writeInfo(Window& win,PlayableCharacter& pg, int level);
 void writeEquipment(Window& win, PlayableCharacter& pg);
 //  Scrive gli oggetti equipaggiati nella finestra a destra
 
-
 void whatsHappening(Window& win,PlayableCharacter& pg);
 //  Scrive gli avvenimenti nella finestra in basso
 
-void move(PlayableCharacter& pg, Monster& mons, Map map);
-//  Il mostro si sposta di 1 verso il pg (solo se questo accorcia la distanza tra loro)
 
 #endif
