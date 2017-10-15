@@ -88,7 +88,6 @@ namespace std
         size_t operator()(Monster m) const;
         // Hash function for the class Monster
     };
-
 }
 
 
