@@ -216,6 +216,59 @@ int Level::getLevel() {
     return level;
 }
 
+void Monster::move(PlayableCharacter& pg, Monster& mons, Map map){
+    Point mpos; //  Posizione del mostro
+    mpos = mons.getPosition();
+    if (awake && (POS.x != tmpp.x-1 || POS.y != tmpp.y-1)){
+
+        int distance[4];
+        int i = 0;
+        int dist = -1;
+        Point fmpos;    //  Futura posizione del mostro
+
+        dist = w(pg.getPosition(), mpos);
+
+        for (int i = 0; i < 4; i++) {
+
+            fmpos.x = -1;
+            fmpos.y = -1;
+
+            switch (i){
+                case 0:
+                    fmpos.x = mpos.x + 1;
+                    fmpos.y = mpos.y;
+                    if ((w(fmpos, pg.getPosition()) < dist) && map(fmpos).isWalkable())
+                        mpos = fmpos;
+                    break;
+                case 1:
+                    fmpos.x = mpos.x - 1;
+                    fmpos.y = mpos.y;
+                    if ((w(fmpos, pg.getPosition()) < dist) && map(fmpos).isWalkable())
+                        mpos = fmpos;
+                    break;
+                case 2:
+                    fmpos.x = mpos.x;
+                    fmpos.y = mpos.y + 1;
+                    if ((w(fmpos, pg.getPosition()) < dist) && map(fmpos).isWalkable())
+                        mpos = fmpos;
+                    break;
+                case 3:
+                    fmpos.x = mpos.x;
+                    fmpos.y = mpos.y - 1;
+                    if ((w(fmpos, pg.getPosition()) < dist) && map(fmpos).isWalkable())
+                        mpos = fmpos;
+                    break;
+                default:
+                    mpos = mons.getPosition();  // Si verifica quando in nessun caso si ridurrebbe la distanza tra mostro e pg
+            }
+        }
+        
+        mons.setPosition(mpos.x, mpos.y);   // Assegna la nuova posizione al mostro
+        
+    }
+
+}
+
 void writeEquipment(Window& win, PlayableCharacter& pg){
     string msg1 = "";
     string msg2 = "";

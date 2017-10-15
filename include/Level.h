@@ -65,4 +65,7 @@ void writeEquipment(Window& win, PlayableCharacter& pg);
 void whatsHappening(Window& win,PlayableCharacter& pg);
 //  Scrive gli avvenimenti nella finestra in basso
 
+void move(PlayableCharacter& pg, Monster& mons, Map map);
+//  Il mostro si sposta di 1 verso il pg (solo se questo accorcia la distanza tra loro)
+
 #endif
