@@ -6,8 +6,8 @@
 #define GAME_MONSTER_H
 #include <string>
 #include "Graph.h"
-
-
+#include "personaggiGiocabili.h"
+#include "Level.h"
 class Monster {
     private:
         int LP, DEF, ATK;
@@ -73,6 +73,9 @@ class Monster {
 
     void wakeUp(bool b);
     //  Dato un booleano setta il campo awake di conseguenza (sveglia o fa dormire il mostro)
+
+    void move(PlayableCharacter& pg, Map map);
+    //  Il mostro si sposta di 1 verso il pg (solo se questo accorcia la distanza tra loro)
 
     friend bool operator==(Monster m1,Monster m2);
     //  Definisce l'operatore "==" per la classe Monster

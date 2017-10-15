@@ -134,6 +134,53 @@ void Monster::wakeUp(bool b){
     this->awake = b;
 }
 
+void Monster::move(PlayableCharacter& pg, Map map){
+
+    if (awake && (POS.x != pg.getPosition().x-1 || POS.y != pg.getPosition().y-1)){
+
+        int distance[4];
+        int i = 0;
+        int dist = -1;
+        Point tmppos;
+
+        dist = w(pg.getPosition(), this->POS);
+
+        for (int i = 0; i < 4; i++) {
+
+            tmppos.x = -1;
+            tmppos.y = -1;
+
+            switch (i){
+                case 0:
+                    tmppos.x = this->POS.x + 1;
+                    tmppos.y = this->POS.y;
+                    if ((w(tmppos, pg.getPosition()) < dist) && map(tmppos).isWalkable())
+                        POS = tmppos;
+                    break;
+                case 1:
+                    tmppos.x = this->POS.x - 1;
+                    tmppos.y = this->POS.y;
+                    if ((w(tmppos, pg.getPosition()) < dist) && map(tmppos).isWalkable())
+                        POS = tmppos;
+                    break;
+                case 2:
+                    tmppos.x = this->POS.x;
+                    tmppos.y = this->POS.y + 1;
+                    if ((w(tmppos, pg.getPosition()) < dist) && map(tmppos).isWalkable())
+                        POS = tmppos;
+                    break;
+                case 3:
+                    tmppos.x = this->POS.x;
+                    tmppos.y = this->POS.y - 1;
+                    if ((w(tmppos, pg.getPosition()) < dist) && map(tmppos).isWalkable())
+                        POS = tmppos;
+                    break;
+            }
+        }
+    }
+
+}
+
 bool operator==(Monster m1,Monster m2){
     m1.id == m2.id;
 }

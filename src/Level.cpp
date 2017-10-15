@@ -189,6 +189,7 @@ int Level::handleMovement(Window& mapWindow, Window& info,PlayableCharacter& pla
                 break;
         }
         player.setPosition(x,y);
+
         if(map(x,y).getId() != "")
         {
             map.setVisible(map(x,y).getId(),monsters,items);
@@ -351,7 +352,6 @@ void Level::shopMenu(PlayableCharacter& pg, vector<Item>& itemsSet)
                 else
                     noMoney = true;
                     itemInfo.printLine("Cucuzze insufficienti!");
-                    //non viene stampato a causa del clear; implementare setFirstAvaiableLine?
             }
             else
                 choice = confirm;   // Così fa vedere le stat della nuova scelta
@@ -362,8 +362,11 @@ void Level::shopMenu(PlayableCharacter& pg, vector<Item>& itemsSet)
 
 }
 
-void whatsHappening(Window& win, PlayableCharacter& pg){
-    // Dovranno esserci le comunicazioni della battaglia, della raccolta di oggetti, dell'aumento delle stats
+void whatsHappening(Window& win, PlayableCharacter& pg) {
+
+    win.printLine("Prova");
+    win.box();
+
 }
 
 Point Level::getUpStairs()

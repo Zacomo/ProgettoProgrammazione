@@ -62,7 +62,7 @@ void writeEquipment(Window& win, PlayableCharacter& pg);
 //  Scrive gli oggetti equipaggiati nella finestra a destra
 
 
-void whatsHappening(Window& win, PlayableCharacter& pg);
+void whatsHappening(Window& win,PlayableCharacter& pg);
 //  Scrive gli avvenimenti nella finestra in basso
 
 #endif
