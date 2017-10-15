@@ -219,7 +219,7 @@ int Level::getLevel() {
 void Monster::move(PlayableCharacter& pg, Monster& mons, Map map){
     Point mpos; //  Posizione del mostro
     mpos = mons.getPosition();
-    if (awake && (POS.x != tmpp.x-1 || POS.y != tmpp.y-1)){
+    if (awake && (mpos.x != pg.getPosition().x-1 && mpos.y != pg.getPosition().y-1)){
 
         int distance[4];
         int i = 0;
@@ -259,7 +259,7 @@ void Monster::move(PlayableCharacter& pg, Monster& mons, Map map){
                         mpos = fmpos;
                     break;
                 default:
-                    mpos = mons.getPosition();  // Si verifica quando in nessun caso si ridurrebbe la distanza tra mostro e pg
+                    mpos = mons.getPosition();  // Si verifica quando sia che il mostro si muova o no la distanza dal pg non diminuisce
             }
         }
         
